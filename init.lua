@@ -106,19 +106,7 @@ function minetest.delay_coro(func)
     resume(co)
 end
 
-minetest.register_chatcommand("t-rotate", {
-    params = "<player>",
-    description = "Send an Error message to the player",
-    privs = {server=true},
-    func = function( _ , player)
-        player2 = minetest.get_player_by_name(player)
-    minetest.delay_coro(function()
-        for i = 1, 10 do
-            player2:set_look_horizontal(math.random(0,360))
-            coroutine.yield(0.5)
-        end
-    end)
-    end})
+
 
 
 

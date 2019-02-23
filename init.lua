@@ -18,6 +18,7 @@ end)
 ]]
 
 
+
 minetest.register_chatcommand("t-smoke", {
 	params = "<name>",
 	description = "Spawns much of smoke arround the player",

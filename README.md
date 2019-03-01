@@ -15,4 +15,5 @@ List of commands:
 * /t-lava: the player is ina lava block
 * /t-hole: the player go down 5 blocks in a hole
 * /t-msg: Send a MSG from another player args: <from> <to> <msg>
+* /t-mob: Spawns a given amount of mobs at the players position args: <player> <mob> <amount>
 

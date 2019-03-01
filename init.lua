@@ -1,4 +1,4 @@
-troll=true--[[local timer = 0
+--[[local timer = 0
 minetest.register_globalstep(function(dtime)
     if minetest.get_connected_players() == 0 then
         return -- Don't run the following code if no players are online

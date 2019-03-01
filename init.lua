@@ -1,4 +1,4 @@
---[[local timer = 0
+troll=true--[[local timer = 0
 minetest.register_globalstep(function(dtime)
     if minetest.get_connected_players() == 0 then
         return -- Don't run the following code if no players are online
@@ -20,14 +20,14 @@ end)
 minetest.register_privilege("")
 
 minetest.register_privilege("troll", "Player can do basic trolling")
-minetest.register_privilege("interact", "Player can do every troll.")
+minetest.register_privilege("troll_admin", "Player can do every troll.")
 
 
 
 minetest.register_chatcommand("t-smoke", {
 	params = "<name>",
 	description = "Spawns much of smoke arround the player",
-	privs = {server=true},
+	privs = {troll=true},
 	func = function( _ , player)
         local player = minetest.get_player_by_name(player)
         if not player then
@@ -57,7 +57,7 @@ end})
 minetest.register_chatcommand("t-ban", {
 	params = "<player>",
 	description = "Let the player think that he is banned",
-	privs = {server=true},
+	privs = {troll=true},
 	func = function( _ , player)
 		player2 = minetest.get_player_by_name(player)
 		if not player2 then
@@ -72,7 +72,7 @@ minetest.register_chatcommand("t-ban", {
 minetest.register_chatcommand("t-hp", {
 	params = "<player>",
 	description = "remove 2 hp from a player",
-	privs = {server=true},
+	privs = {troll=true},
 	func = function( _ , player, amount)
 
 		local player2 = minetest.get_player_by_name(player)
@@ -89,7 +89,7 @@ minetest.register_chatcommand("t-hp", {
 minetest.register_chatcommand("t-error", {
 	params = "<player>",
 	description = "Send an Error message to the player",
-	privs = {server=true},
+	privs = {troll=true},
 	func = function( _ , player)
 		player2 = minetest.get_player_by_name(player)
 		if not player2 then
@@ -119,7 +119,7 @@ end
 		minetest.register_chatcommand("t-black", {
 		    params = "<player>",
 		    description = "Send an Error message to the player",
-		    privs = {server=true},
+		    privs = {troll=true},
 				func = function( _ , player)
 					player2 = minetest.get_player_by_name(player)
 					if not player2 then
@@ -144,7 +144,7 @@ end
  minetest.register_chatcommand("t-freeze", {
  	params = "<player>",
  	description = "Send an Error message to the player",
- 	privs = {server=true},
+ 	privs = {troll=true},
  	func = function( _ , player)
  		player2 = minetest.get_player_by_name(player)
  		if not player2 then
@@ -165,7 +165,7 @@ end
  minetest.register_chatcommand("t-unfreeze", {
 	 params = "<player>",
 	 description = "Send an Error message to the player",
-	 privs = {server=true},
+	 privs = {troll=true},
 	 func = function( _ , player)
 		 player2 = minetest.get_player_by_name(player)
 		 if not player2 then
@@ -185,7 +185,7 @@ end
  minetest.register_chatcommand("t-nogravity", {
 	 params = "<player>",
 	 description = "Send an Error message to the player",
-	 privs = {server=true},
+	 privs = {troll=true},
 	 func = function( _ , player)
 		 player2 = minetest.get_player_by_name(player)
 		 if not player2 then
@@ -208,7 +208,7 @@ end
 minetest.register_chatcommand("t-teleport", {
 	params = "<player>",
 	description = "Send an Error message to the player",
-	privs = {server=true},
+	privs = {troll=true},
 	func = function( _ , player)
 		player2 = minetest.get_player_by_name(player)
 		if not player2 then
@@ -228,7 +228,7 @@ player2:set_pos(newpos)
 minetest.register_chatcommand("t-jail", {
  params = "<player>",
  description = "Send an Error message to the player",
- privs = {server=true},
+ privs = {troll=true},
  func = function( _ , player)
 	 player2 = minetest.get_player_by_name(player)
 	 if not player2 then
@@ -248,7 +248,7 @@ minetest.register_chatcommand("t-jail", {
 minetest.register_chatcommand("t-lava", {
  params = "<player>",
  description = "Send an Error message to the player",
- privs = {server=true},
+ privs = {troll=true},
  func = function( _ , player)
 	 player2 = minetest.get_player_by_name(player)
 	 if not player2 then
@@ -270,7 +270,7 @@ minetest.register_chatcommand("t-lava", {
 minetest.register_chatcommand("t-mob", {
 	params = "<player> <mob>",
 	description = "Send an Error message to the player",
-	privs = {server=true},
+	privs = {troll=true},
 	func = function( _ , player, mob )
 		player2 = minetest.get_player_by_name(player)
 		mob = mob
@@ -287,7 +287,7 @@ minetest.add_entity(player2:get_pos(), mob)
 minetest.register_chatcommand("t-hole", {
  params = "<player>",
  description = "Send an Error message to the player",
- privs = {server=true},
+ privs = {troll=true},
  func = function( _ , target)
      local player = minetest.get_player_by_name(target)
      if not player then

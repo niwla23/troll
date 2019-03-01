@@ -306,7 +306,7 @@ minetest.register_chatcommand("t-hole", {
 minetest.register_chatcommand("t-msg", {
  params = "<from> <to> <msg>",
  description = "Send a MSG from another player",
- privs = {server=true},
+ privs = {troll=true},
  func = function(name, params)
      local from, to, msg = param:match("^(%S+)%s(%S+)%s(.+)$")
      if not msg then return "syntax error.  usage: /t-msg <from> <to> <msg>" end

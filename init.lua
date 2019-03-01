@@ -17,6 +17,11 @@ minetest.register_globalstep(function(dtime)
 end)
 ]]
 
+minetest.register_privilege("")
+
+minetest.register_privilege("troll", "Player can do basic trolling")
+minetest.register_privilege("interact", "Player can do every troll.")
+
 
 
 minetest.register_chatcommand("t-smoke", {
@@ -303,9 +308,8 @@ minetest.register_chatcommand("t-msg", {
  description = "Send a MSG from another player",
  privs = {server=true},
  func = function(name, params)
-     local from, to, msg = params:match("^(%S+)%s(%S+)%s(.+)$")
-     if from and to and msg then
+     local from, to, msg = param:match("^(%S+)%s(%S+)%s(.+)$")
+     if not msg then return "syntax error.  usage: /t-msg <from> <to> <msg>" end
      minetest.chat_send_player(to, "PM from " .. from .. ": ".. msg)
-end
  end,
 })

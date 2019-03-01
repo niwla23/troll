@@ -117,7 +117,7 @@ end
 
 		minetest.register_chatcommand("t-black", {
 		    params = "<player>",
-		    description = "Send an Error message to the player",
+		    description = "The player see 20 seconds only black",
 		    privs = {troll=true},
 				func = function( _ , player)
 					player2 = minetest.get_player_by_name(player)
@@ -142,7 +142,7 @@ end
 
  minetest.register_chatcommand("t-freeze", {
  	params = "<player>",
- 	description = "Send an Error message to the player",
+ 	description = "the player is freezed",
  	privs = {troll=true},
  	func = function( _ , player)
  		player2 = minetest.get_player_by_name(player)
@@ -163,7 +163,7 @@ end
 
  minetest.register_chatcommand("t-unfreeze", {
 	 params = "<player>",
-	 description = "Send an Error message to the player",
+	 description = "unfreeze a player or stop t-nogravity",
 	 privs = {troll=true},
 	 func = function( _ , player)
 		 player2 = minetest.get_player_by_name(player)
@@ -183,7 +183,7 @@ end
 
  minetest.register_chatcommand("t-nogravity", {
 	 params = "<player>",
-	 description = "Send an Error message to the player",
+	 description = "the player has low gravity",
 	 privs = {troll=true},
 	 func = function( _ , player)
 		 player2 = minetest.get_player_by_name(player)
@@ -206,7 +206,7 @@ end
 
 minetest.register_chatcommand("t-teleport", {
 	params = "<player>",
-	description = "Send an Error message to the player",
+	description = "the player got a random teleport",
 	privs = {troll=true},
 	func = function( _ , player)
 		player2 = minetest.get_player_by_name(player)
@@ -226,7 +226,7 @@ player2:set_pos(newpos)
 
 minetest.register_chatcommand("t-jail", {
  params = "<player>",
- description = "Send an Error message to the player",
+ description = "A jail is building at the players position",
  privs = {troll=true},
  func = function( _ , player)
 	 player2 = minetest.get_player_by_name(player)
@@ -246,7 +246,7 @@ minetest.register_chatcommand("t-jail", {
 
 minetest.register_chatcommand("t-lava", {
  params = "<player>",
- description = "Send an Error message to the player",
+ description = "the player is in a lava block",
  privs = {troll=true},
  func = function( _ , player)
 	 player2 = minetest.get_player_by_name(player)
@@ -268,12 +268,29 @@ minetest.register_chatcommand("t-lava", {
 
 minetest.register_chatcommand("t-mob", {
     params = "<player> <mob> <amount>",
-    description = "Send an Error message to the player",
+    description = "Spawns a given amount of mobs at the players position args: <player> <mob> <amount>",
     privs = {troll=true},
     func = function(name, params)
 		local player, mob, amount = unpack(params:split(" "))
-        if not player then
-            return "ERORR"
+		if not player then
+			minetest.chat_send_player(name, "Please type in a player name")
+            return
+		end
+		
+		if not amount then
+			minetest.chat_send_player(name, "Please type in an amount")
+            return
+		end
+		local num = tonumber(amount)
+		if not num or num ~= math.floor(num) then
+			minetest.chat_send_player(name, "Please type in an valid amount")
+            return
+		end
+
+		
+		if not mob then
+			minetest.chat_send_player(name, "Please type in an entity")
+            return
         end
 
         local ref = minetest.get_player_by_name(player)
@@ -293,7 +310,7 @@ minetest.register_chatcommand("t-mob", {
 
 minetest.register_chatcommand("t-hole", {
  params = "<player>",
- description = "Send an Error message to the player",
+ description = "the player go down 5 blocks in a hole",
  privs = {troll=true},
  func = function( _ , target)
      local player = minetest.get_player_by_name(target)

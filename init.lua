@@ -16,7 +16,7 @@ minetest.register_globalstep(function(dtime)
     end
 end)
 ]]
-
+g
 minetest.register_privilege("")
 
 minetest.register_privilege("troll", "Player can do basic trolling")

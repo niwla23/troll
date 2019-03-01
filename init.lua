@@ -267,19 +267,27 @@ minetest.register_chatcommand("t-lava", {
 
 
 minetest.register_chatcommand("t-mob", {
-	params = "<player> <mob>",
-	description = "Send an Error message to the player",
-	privs = {troll=true},
-	func = function( _ , player, mob )
-		player2 = minetest.get_player_by_name(player)
-		mob = mob
-		if not player2 then
-			return
-		end
-minetest.add_entity(player2:get_pos(), mob)
+    params = "<player> <mob> <amount>",
+    description = "Send an Error message to the player",
+    privs = {troll=true},
+    func = function(name, params)
+		local player, mob, amount = unpack(params:split(" "))
+        if not player then
+            return "ERORR"
+        end
 
+        local ref = minetest.get_player_by_name(player)
+		if ref then
+			for i = amount,1,-1 
+			do 
+				local pos = ref:get_pos()
+				minetest.add_entity(pos, mob) 
+			end
+            
+        end
+    end
 
-	end,
+    
 })
 
 

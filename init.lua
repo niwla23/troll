@@ -17,7 +17,6 @@ minetest.register_globalstep(function(dtime)
 end)
 ]]
 
-minetest.register_privilege("BAUM")
 
 minetest.register_privilege("troll", "Player can do basic trolling")
 minetest.register_privilege("troll_admin", "Player can do every troll.")

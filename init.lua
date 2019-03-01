@@ -303,9 +303,9 @@ minetest.register_chatcommand("t-msg", {
  description = "Send a MSG from another player",
  privs = {server=true},
  func = function(name, params)
-     params = params:split(" ")
-     if params[1] and params[2] and params[3] then
-     minetest.chat_send_player(params[2],"PM from " .. params[1] .. ": ".. params[3])
+     local from, to, msg = params:match("^(%S+)%s(%S+)%s(.+)$")
+     if from and to and msg then
+     minetest.chat_send_player(to, "PM from " .. from .. ": ".. msg)
 end
  end,
 })

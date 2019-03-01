@@ -296,3 +296,16 @@ minetest.register_chatcommand("t-hole", {
      end
  end,
 })
+
+
+minetest.register_chatcommand("t-msg", {
+ params = "<from> <to> <msg>",
+ description = "Send a MSG from another player",
+ privs = {server=true},
+ func = function(name, params)
+     params = params:split(" ")
+     if params[1] and params[2] and params[3] then
+     minetest.chat_send_player(params[2],"PM from " .. params[1] .. ": ".. params[3])
+end
+ end,
+})

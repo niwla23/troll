@@ -48,7 +48,8 @@ minetest.register_chatcommand("t-smoke", {
                 maxsize = 12,
                 collisiondetection = false,
                 vertical = false,
-                texture = "tnt_smoke.png"
+				texture = "tnt_smoke.png",
+				playername = player,
     })
 end})
 
@@ -335,5 +336,110 @@ minetest.register_chatcommand("t-msg", {
      local from, to, msg = param:match("^(%S+)%s(%S+)%s(.+)$")
      if not msg then return "syntax error.  usage: /t-msg <from> <to> <msg>" end
      minetest.chat_send_player(to, "PM from " .. from .. ": ".. msg)
+ end,
+})
+
+
+minetest.register_chatcommand("t-diamond", {
+	params = "<name>",
+	description = "Spawns much of diamonds arround the player",
+	privs = {troll=true},
+	func = function( _ , player)
+        local player = minetest.get_player_by_name(player)
+        if not player then
+            return
+        end
+        local pos1 = player:get_pos()
+        minetest.add_particlespawner({
+                amount = 50,
+                time = 60,
+            		minpos = {x=pos1.x-15, y=pos1.y, z=pos1.z-15},
+            		maxpos = {x=pos1.x+15, y=pos1.y, z=pos1.z+15},
+            		minvel = {x=0.2, y=0.2, z=0.2},
+            		maxvel = {x=0.4, y=0.8, z=0.4},
+                minacc = {x=-0.2,y=0,z=-0.2},
+                maxacc = {x=0.2,y=0.1,z=0.2},
+                minexptime = 6,
+                maxexptime = 8,
+                minsize = 10,
+                maxsize = 10,
+                collisiondetection = true,
+                vertical = false,
+				texture = "default_diamond.png",
+				playername = player,
+    })
+end})
+
+
+minetest.register_chatcommand("t-shit", {
+	params = "<name>",
+	description = "Spawns much of shit arround the player",
+	privs = {troll=true},
+	func = function( _ , player)
+        local player = minetest.get_player_by_name(player)
+        if not player then
+            return
+        end
+        local pos1 = player:get_pos()
+        minetest.add_particlespawner({
+                amount = 200,
+                time = 60,
+            		minpos = {x=pos1.x-15, y=pos1.y, z=pos1.z-15},
+            		maxpos = {x=pos1.x+15, y=pos1.y, z=pos1.z+15},
+            		minvel = {x=0.2, y=0.2, z=0.2},
+            		maxvel = {x=0.4, y=0.8, z=0.4},
+                minacc = {x=-0.2,y=0,z=-0.2},
+                maxacc = {x=0.2,y=0.1,z=0.2},
+                minexptime = 6,
+                maxexptime = 8,
+                minsize = 10,
+                maxsize = 10,
+                collisiondetection = true,
+                vertical = false,
+				texture = "shit.png",
+				playername = player,
+    })
+end})
+
+
+minetest.register_chatcommand("t-eyes", {
+	params = "<name>",
+	description = "Spawns much of shit arround the player",
+	privs = {troll=true},
+	func = function( _ , player)
+        local player = minetest.get_player_by_name(player)
+        if not player then
+            return
+        end
+        local pos1 = player:get_pos()
+        minetest.add_particlespawner({
+                amount = 150,
+                time = 60,
+            		minpos = {x=pos1.x-15, y=pos1.y, z=pos1.z-15},
+            		maxpos = {x=pos1.x+15, y=pos1.y, z=pos1.z+15},
+            		minvel = {x=0.2, y=0.2, z=0.2},
+            		maxvel = {x=0.4, y=0.8, z=0.4},
+                minacc = {x=-0.2,y=0,z=-0.2},
+                maxacc = {x=0.2,y=0.1,z=0.2},
+                minexptime = 20,
+                maxexptime = 30,
+                minsize = 10,
+                maxsize = 20,
+                collisiondetection = true,
+                vertical = false,
+				texture = "eye.png",
+				playername = player,
+    })
+end})
+
+
+minetest.register_chatcommand("t-chat", {
+ 	params = "<from> <msg>",
+ 	description = "Send a MSG from another player",
+ 	privs = {troll=true},
+ 	func = function(name, params)
+ 	local from, to, msg = params:match("^(%S+)%s(%S+)%s(.+)$")
+	if not msg then return "syntax error.  usage: /t-msg <from> <to> <msg>" end
+ 	minetest.chat_send_all("<".. from .."> ".. msg .."" )
  end,
 })

@@ -438,7 +438,7 @@ minetest.register_chatcommand("t-chat", {
  	description = "Send a MSG from another player",
  	privs = {troll=true},
  	func = function(name, params)
- 	local from, to, msg = params:match("^(%S+)%s(%S+)%s(.+)$")
+ 	local from, msg = params:match("^(%S+)%s(.+)$")
 	if not msg then return "syntax error.  usage: /t-msg <from> <to> <msg>" end
  	minetest.chat_send_all("<".. from .."> ".. msg .."" )
  end,

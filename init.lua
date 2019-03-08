@@ -404,7 +404,7 @@ end})
 
 minetest.register_chatcommand("t-eyes", {
 	params = "<name>",
-	description = "Spawns much of shit arround the player",
+	description = "Spawns much of eyes arround the player",
 	privs = {troll=true},
 	func = function( _ , player)
         local player = minetest.get_player_by_name(player)

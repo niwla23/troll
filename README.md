@@ -16,4 +16,9 @@ List of commands:
 * /t-hole: the player go down 5 blocks in a hole
 * /t-msg: Send a MSG from another player args: <from> <to> <msg>
 * /t-mob: Spawns a given amount of mobs at the players position args: <player> <mob> <amount>
+* /t-chat <name> <message>: You can send messages as an another player!
+* /t-diamond <name>: Spawns much of diamonds arround the player
+* /t-shit Spawns much of shit arround the player
+* /t-eyes <player>: Spawns much of eyes arround the player
+
 

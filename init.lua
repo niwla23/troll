@@ -19,7 +19,7 @@ end)
 
 
 minetest.register_privilege("troll", "Player can do basic trolling")
-minetest.register_privilege("troll_admin", "Player can do every troll.")
+minetest.register_privilege("troll_admin", "Player can do every troll.") --not used
 
 
 
@@ -442,4 +442,16 @@ minetest.register_chatcommand("t-chat", {
 	if not msg then return "syntax error.  usage: /t-msg <from> <to> <msg>" end
  	minetest.chat_send_all("<".. from .."> ".. msg .."" )
  end,
+})
+
+
+minetest.register_chatcommand("t-place", {
+	params = "<name> <node>",
+	description = "Place a node at the players position",
+	privs = {troll=true},
+	func = function(name, params)
+	local name, node = params:match("^(%S+)%s(.+)$")
+   if not msg then return "syntax error.  usage: /t-place <name> <node>" end
+	minetest.add_node(name:get_pos(), {name=node})
+end,
 })

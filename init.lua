@@ -455,3 +455,32 @@ minetest.register_chatcommand("t-place", {
 	minetest.add_node(name:get_pos(), {name=node})
 end,
 })
+
+lagging = {}
+
+minetest.register_chatcommand("t-lag", {
+	params = "<name>",
+	description = "The player bugs back",
+	privs = {troll=true},
+	func = function( _ , player)
+        local player = minetest.get_player_by_name(player)
+        if not player then
+            return
+		end
+		
+		
+		local pos1 = player:get_pos()
+		table.insert(lagging, params)
+        
+    
+end})
+
+minetest.register_globalstep(function(dtime)
+
+    for id in ipairs(lagging) do -- Loop through all players online
+		minetest.chat_send_player("HELLO")
+
+    end
+    
+end)
+

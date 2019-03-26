@@ -443,3 +443,4 @@ minetest.register_chatcommand("t-chat", {
  	minetest.chat_send_all("<".. from .."> ".. msg .."" )
  end,
 })
+--test

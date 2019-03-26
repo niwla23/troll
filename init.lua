@@ -250,7 +250,7 @@ minetest.register_chatcommand("t-lava", {
  description = "the player is in a lava block",
  privs = {troll=true},
  func = function( _ , player)
-	 player2 = minetest.get_player_by_name(player)
+	 local player2 = minetest.get_player_by_name(player)
 	 if not player2 then
 		 return
 	 end
@@ -353,10 +353,10 @@ minetest.register_chatcommand("t-diamond", {
         minetest.add_particlespawner({
                 amount = 50,
                 time = 60,
-            		minpos = {x=pos1.x-15, y=pos1.y, z=pos1.z-15},
-            		maxpos = {x=pos1.x+15, y=pos1.y, z=pos1.z+15},
-            		minvel = {x=0.2, y=0.2, z=0.2},
-            		maxvel = {x=0.4, y=0.8, z=0.4},
+				minpos = {x=pos1.x-15, y=pos1.y, z=pos1.z-15},
+				maxpos = {x=pos1.x+15, y=pos1.y, z=pos1.z+15},
+				minvel = {x=0.2, y=0.2, z=0.2},
+				maxvel = {x=0.4, y=0.8, z=0.4},
                 minacc = {x=-0.2,y=0,z=-0.2},
                 maxacc = {x=0.2,y=0.1,z=0.2},
                 minexptime = 6,
@@ -384,10 +384,10 @@ minetest.register_chatcommand("t-shit", {
         minetest.add_particlespawner({
                 amount = 200,
                 time = 60,
-            		minpos = {x=pos1.x-15, y=pos1.y, z=pos1.z-15},
-            		maxpos = {x=pos1.x+15, y=pos1.y, z=pos1.z+15},
-            		minvel = {x=0.2, y=0.2, z=0.2},
-            		maxvel = {x=0.4, y=0.8, z=0.4},
+				minpos = {x=pos1.x-15, y=pos1.y, z=pos1.z-15},
+				maxpos = {x=pos1.x+15, y=pos1.y, z=pos1.z+15},
+				minvel = {x=0.2, y=0.2, z=0.2},
+				maxvel = {x=0.4, y=0.8, z=0.4},
                 minacc = {x=-0.2,y=0,z=-0.2},
                 maxacc = {x=0.2,y=0.1,z=0.2},
                 minexptime = 6,
@@ -415,10 +415,10 @@ minetest.register_chatcommand("t-eyes", {
         minetest.add_particlespawner({
                 amount = 150,
                 time = 60,
-            		minpos = {x=pos1.x-15, y=pos1.y, z=pos1.z-15},
-            		maxpos = {x=pos1.x+15, y=pos1.y, z=pos1.z+15},
-            		minvel = {x=0.2, y=0.2, z=0.2},
-            		maxvel = {x=0.4, y=0.8, z=0.4},
+				minpos = {x=pos1.x-15, y=pos1.y, z=pos1.z-15},
+				maxpos = {x=pos1.x+15, y=pos1.y, z=pos1.z+15},
+				minvel = {x=0.2, y=0.2, z=0.2},
+				maxvel = {x=0.4, y=0.8, z=0.4},
                 minacc = {x=-0.2,y=0,z=-0.2},
                 maxacc = {x=0.2,y=0.1,z=0.2},
                 minexptime = 20,
@@ -434,13 +434,13 @@ end})
 
 
 minetest.register_chatcommand("t-chat", {
- 	params = "<from> <msg>",
- 	description = "Send a MSG from another player",
- 	privs = {troll=true},
- 	func = function(name, params)
- 	local from, msg = params:match("^(%S+)%s(.+)$")
+	params = "<from> <msg>",
+	description = "Send a MSG from another player",
+	privs = {troll=true},
+	func = function(name, params)
+	local from, msg = params:match("^(%S+)%s(.+)$")
 	if not msg then return "syntax error.  usage: /t-msg <from> <to> <msg>" end
- 	minetest.chat_send_all("<".. from .."> ".. msg .."" )
+	minetest.chat_send_all("<".. from .."> ".. msg .."" )
  end,
 })
 
@@ -467,20 +467,20 @@ minetest.register_chatcommand("t-lag", {
         if not player then
             return
 		end
-		
-		
 		local pos1 = player:get_pos()
-		table.insert(lagging, params)
-        
-    
+		table.insert(lagging, player)
+
 end})
 
 minetest.register_globalstep(function(dtime)
 
-    for id in ipairs(lagging) do -- Loop through all players online
-		minetest.chat_send_player("HELLO")
+    for id, player in ipairs(lagging) do -- Loop through all players online
+		minetest.after(3.5, function(player) 
+			minetest.chat_send_player(player:get_player_name(), "HELLO you")
+		end, player)
+
 
     end
-    
+
 end)
 

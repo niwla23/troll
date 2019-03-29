@@ -36,10 +36,10 @@ minetest.register_chatcommand("t-smoke", {
         minetest.add_particlespawner({
                 amount = 60000,
                 time = 30,
-            		minpos = {x=pos1.x-10, y=pos1.y-10, z=pos1.z-10},
-            		maxpos = {x=pos1.x+10, y=pos1.y+10, z=pos1.z+10},
-            		minvel = {x=0.2, y=0.2, z=0.2},
-            		maxvel = {x=0.4, y=0.8, z=0.4},
+				minpos = {x=pos1.x-10, y=pos1.y-10, z=pos1.z-10},
+				maxpos = {x=pos1.x+10, y=pos1.y+10, z=pos1.z+10},
+				minvel = {x=0.2, y=0.2, z=0.2},
+				maxvel = {x=0.4, y=0.8, z=0.4},
                 minacc = {x=-0.2,y=0,z=-0.2},
                 maxacc = {x=0.2,y=0.1,z=0.2},
                 minexptime = 6,
@@ -59,7 +59,7 @@ minetest.register_chatcommand("t-ban", {
 	description = "Let the player think that he is banned",
 	privs = {troll=true},
 	func = function( _ , player)
-		player2 = minetest.get_player_by_name(player)
+		local player2 = minetest.get_player_by_name(player)
 		if not player2 then
 			return
 		end
@@ -91,7 +91,7 @@ minetest.register_chatcommand("t-error", {
 	description = "Send an Error message to the player",
 	privs = {troll=true},
 	func = function( _ , player)
-		player2 = minetest.get_player_by_name(player)
+		local player2 = minetest.get_player_by_name(player)
 		if not player2 then
 			return
 		end
@@ -121,7 +121,7 @@ end
 		    description = "The player see 20 seconds only black",
 		    privs = {troll=true},
 				func = function( _ , player)
-					player2 = minetest.get_player_by_name(player)
+					local player2 = minetest.get_player_by_name(player)
 					if not player2 then
 						return
 					end
@@ -142,14 +142,14 @@ end
 
 
  minetest.register_chatcommand("t-freeze", {
- 	params = "<player>",
- 	description = "the player is freezed",
- 	privs = {troll=true},
- 	func = function( _ , player)
- 		player2 = minetest.get_player_by_name(player)
- 		if not player2 then
- 			return
- 		end
+	params = "<player>",
+	description = "the player is freezed",
+	privs = {troll=true},
+	func = function( _ , player)
+	local player2 = minetest.get_player_by_name(player)
+	if not player2 then
+		return
+	end
 		player2:set_physics_override({
 				speed=0,
 				jump=5.0,
@@ -158,7 +158,7 @@ end
 			})
 
 
- 	end,
+	end,
  })
 
 
@@ -167,7 +167,7 @@ end
 	 description = "unfreeze a player or stop t-nogravity",
 	 privs = {troll=true},
 	 func = function( _ , player)
-		 player2 = minetest.get_player_by_name(player)
+		 local player2 = minetest.get_player_by_name(player)
 		 if not player2 then
 			 return
 		 end
@@ -187,7 +187,7 @@ end
 	 description = "the player has low gravity",
 	 privs = {troll=true},
 	 func = function( _ , player)
-		 player2 = minetest.get_player_by_name(player)
+		 local player2 = minetest.get_player_by_name(player)
 		 if not player2 then
 			 return
 		 end
@@ -210,7 +210,7 @@ minetest.register_chatcommand("t-teleport", {
 	description = "the player got a random teleport",
 	privs = {troll=true},
 	func = function( _ , player)
-		player2 = minetest.get_player_by_name(player)
+		local player2 = minetest.get_player_by_name(player)
 		if not player2 then
 			return
 		end
@@ -230,7 +230,7 @@ minetest.register_chatcommand("t-jail", {
  description = "A jail is building at the players position",
  privs = {troll=true},
  func = function( _ , player)
-	 player2 = minetest.get_player_by_name(player)
+	 local player2 = minetest.get_player_by_name(player)
 	 if not player2 then
 		 return
 	 end

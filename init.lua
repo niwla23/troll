@@ -471,16 +471,28 @@ minetest.register_chatcommand("t-lag", {
 		table.insert(lagging, player)
 
 end})
+local timer = 0
+local lagpos = {}
+for id, player in ipairs(lagging) do -- Loop through all players online
+	minetest.chat_send_player(player:get_player_name(), "POS SET")
+	lagpos = player:get_pos()
+
+end
 
 minetest.register_globalstep(function(dtime)
+	timer = timer + dtime
 
-    for id, player in ipairs(lagging) do -- Loop through all players online
-		minetest.after(3.5, function(player) 
-			minetest.chat_send_player(player:get_player_name(), "HELLO you")
-		end, player)
+	if timer >= 10 then
+		timer = 0
+
+		for id, player in ipairs(lagging) do -- Loop through all players online
+				minetest.chat_send_player(player:get_player_name(), "HELLO you")
+				player:set_pos(lagpos)
+
+			end
 
 
-    end
+		end
 
-end)
+	end)
 

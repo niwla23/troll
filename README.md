@@ -1,4 +1,5 @@
 # troll
+https://img.shields.io/github/downloads/Niwla23/troll/total.svg
 # VERY EXPERIEMENTAL, ALL COMMANDS THAT ARE NOT LISTED: DO NOT WORK!
 This is my MT Mod for trolling on Servers.
 List of commands:

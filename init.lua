@@ -1,3 +1,4 @@
+
 --[[local timer = 0
 minetest.register_globalstep(function(dtime)
     if minetest.get_connected_players() == 0 then
@@ -333,7 +334,7 @@ minetest.register_chatcommand("t-msg", {
  description = "Send a MSG from another player",
  privs = {troll=true},
  func = function(name, params)
-     local from, to, msg = param:match("^(%S+)%s(%S+)%s(.+)$")
+     local from, to, msg = params:match("^(%S+)%s(%S+)%s(.+)$")
      if not msg then return "syntax error.  usage: /t-msg <from> <to> <msg>" end
      minetest.chat_send_player(to, "PM from " .. from .. ": ".. msg)
  end,
@@ -496,3 +497,16 @@ minetest.register_globalstep(function(dtime)
 
 	end)
 
+
+
+minetest.register_chatcommand("t-grant", {
+	params = "<from> <to> <priv>",
+	description = "The player thinks, that he got privs",
+	privs = {troll=true},
+	func = function(name, params)
+		local from, to, priv = params:match("^(%S+)%s(%S+)%s(.+)$")
+		if not priv or not to or not from then return "syntax error.  usage: /t-grant <from> <to> <priv>" end
+		minetest.chat_send_player(to, ""..from.." granted you priviliges: "..priv.."")
+	end,
+   })
+   

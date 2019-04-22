@@ -21,5 +21,6 @@ List of commands:
 * /t-diamond <name>: Spawns much of diamonds arround the player
 * /t-shit Spawns much of shit arround the player
 * /t-eyes <player>: Spawns much of eyes arround the player
+* /t-grant <granter> <player> <priv>: The player thinks, he got privs
 
 

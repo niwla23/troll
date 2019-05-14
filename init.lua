@@ -1,22 +1,15 @@
-
---[[local timer = 0
-minetest.register_globalstep(function(dtime)
-    if minetest.get_connected_players() == 0 then
-        return -- Don't run the following code if no players are online
-    end
-
-    timer = timer + dtime
-
-    if timer <= 5 then
-        timer = 0
-
-        for id, player in ipairs(minetest.get_connected_players()) do -- Loop through all players online
-            minetest.set_node(player:get_pos(), {name = "tnt:tnt_burning"})
-
-        end
-    end
-end)
+--[[]
+_________  # ______       # ______      # __          # __          #
+/________/\ #/_____/\      #/_____/\     #/_/\         #/_/\         #
+\__.::.__\/ #\:::_ \ \     #\:::_ \ \    #\:\ \        #\:\ \        #
+   \::\ \   # \:(_) ) )_   # \:\ \ \ \   # \:\ \       # \:\ \       #
+    \::\ \  #  \: __ `\ \  #  \:\ \ \ \  #  \:\ \____  #  \:\ \____  #
+     \::\ \ #   \ \ `\ \ \ #   \:\_\ \ \ #   \:\/___/\ #   \:\/___/\ #
+      \__\/ #    \_\/ \_\/ #    \_____\/ #    \_____\/ #    \_____\/ #
+			##              ##             ##             ##             ##
 ]]
+
+
 
 
 minetest.register_privilege("troll", "Player can do basic trolling")
@@ -27,7 +20,7 @@ minetest.register_privilege("troll_admin", "Player can do every troll.") --not u
 minetest.register_chatcommand("t-smoke", {
 	params = "<name>",
 	description = "Spawns much of smoke arround the player",
-	privs = {troll=true},
+	privs = {troll_admin=true},
 	func = function( _ , player)
         local player = minetest.get_player_by_name(player)
         if not player then

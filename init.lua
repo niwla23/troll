@@ -17,6 +17,8 @@ minetest.register_privilege("troll_admin", "Player can do every troll.") --not u
 
 
 
+
+
 minetest.register_chatcommand("t-smoke", {
 	params = "<name>",
 	description = "Spawns much of smoke arround the player",
@@ -44,6 +46,34 @@ minetest.register_chatcommand("t-smoke", {
                 vertical = false,
 				texture = "tnt_smoke.png",
 				playername = player,
+    })
+end})
+
+minetest.register_chatcommand("t-blackparticles", {
+	params = "<name>",
+	description = "Spawns much of black falling particles",
+	privs = {troll_admin=true},
+	func = function( _ , player)
+        local player = minetest.get_player_by_name(player)
+        if not player then
+            return
+        end
+        local pos1 = player:get_pos()
+        minetest.add_particlespawner({
+            amount = 10000,
+            time = 60,
+            minpos = {x=pos1.x+5,y=pos1.y,z=pos1.z+5},
+            maxpos = {x=pos1.x-5,y=pos1.y,z=pos1.z-5},
+            minvel = {x = -0, y = 0, z = -0},
+            maxvel = {x = 1, y = 1, z = 1},
+            minacc = {x = 1, y = 1, z = 1},
+            maxacc = {x = -1, y = -1, z = -1},
+            minexptime = 10,
+            maxexptime = 20,
+            minsize = 7,
+            maxsize = 16,
+            texture = "black.png",
+            collisiondetection = true
     })
 end})
 

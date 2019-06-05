@@ -468,15 +468,15 @@ minetest.register_chatcommand("t-chat", {
  end,
 })
 
-
+--not working
 minetest.register_chatcommand("t-place", {
 	params = "<name> <node>",
 	description = "Place a node at the players position",
 	privs = {troll=true},
 	func = function(name, params)
-	local name, node = params:match("^(%S+)%s(.+)$")
-   if not msg then return "syntax error.  usage: /t-place <name> <node>" end
-	minetest.add_node(name:get_pos(), {name=node})
+	local playername, node = params:match("^(%S+)%s(.+)$")
+	local player minetest.get_player_by_name(playername)
+	minetest.add_node(player:get_pos(), {name=node})
 end,
 })
 

@@ -15,15 +15,15 @@ List of commands:
 * /t-jail: A jail is building at the players position
 * /t-lava: the player is ina lava block
 * /t-hole: the player go down 5 blocks in a hole
-* /t-msg: Send a MSG from another player args: from> to> msg>
-* /t-mob: Spawns a given amount of mobs at the players position args: player> mob> amount>
-* /t-chat name> message>: You can send messages as an another player!
-* /t-diamond name>: Spawns much of diamonds arround the player
+* /t-msg: Send a MSG from another player args: from to msg
+* /t-mob: Spawns a given amount of mobs at the players position args: player mob amount
+* /t-chat name message: You can send messages as an another player!
+* /t-diamond name: Spawns much of diamonds arround the player
 * /t-shit Spawns much of shit arround the player
-* /t-eyes player>: Spawns much of eyes arround the player
-* /t-blackparticles player>: Spawns much of black particles arround the player
-* /t-grant granter> player> priv>: The player thinks, he got privs
-* /t-chat sender> message>: Send something in the chat with another name!
-* /t-msg fromstring> toplayer> msgstring>: Send an msg from another player
+* /t-eyes player: Spawns much of eyes arround the player
+* /t-blackparticles player: Spawns much of black particles arround the player
+* /t-grant granter player priv: The player thinks, he got privs
+* /t-chat sender message: Send something in the chat with another name!
+* /t-msg fromstring toplayer msgstring: Send an msg from another player
 
 

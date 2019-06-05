@@ -21,6 +21,9 @@ List of commands:
 * /t-diamond <name>: Spawns much of diamonds arround the player
 * /t-shit Spawns much of shit arround the player
 * /t-eyes <player>: Spawns much of eyes arround the player
+* /t-blackparticles <player>: Spawns much of black particles arround the player
 * /t-grant <granter> <player> <priv>: The player thinks, he got privs
+* /t-chat <sender> <message>: Send something in the chat with another name!
+* /t-msg <fromstring> <toplayer> <msgstring>: Send an msg from another player
 
 
